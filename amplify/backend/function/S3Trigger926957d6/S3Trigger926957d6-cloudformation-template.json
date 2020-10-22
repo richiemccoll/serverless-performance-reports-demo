@@ -2,11 +2,6 @@
 	"AWSTemplateFormatVersion": "2010-09-09",
 	"Description": "Lambda resource stack creation using Amplify CLI",
 	"Parameters": {
-		"CloudWatchRule": {
-			"Type": "String",
-			"Default": "NONE",
-			"Description": " Schedule Expression"
-		},
 		"env": {
 			"Type": "String"
 		}
@@ -33,12 +28,12 @@
 				"FunctionName": {
 					"Fn::If": [
 						"ShouldNotCreateEnvResources",
-						"genreporttest",
+						"S3Trigger926957d6",
 						{
 							"Fn::Join": [
 								"",
 								[
-									"genreporttest",
+									"S3Trigger926957d6",
 									"-",
 									{
 										"Ref": "env"
@@ -52,9 +47,6 @@
 					"Variables": {
 						"ENV": {
 							"Ref": "env"
-						},
-						"REGION": {
-							"Ref": "AWS::Region"
 						}
 					}
 				},
@@ -64,11 +56,11 @@
 						"Arn"
 					]
 				},
-				"Runtime": "nodejs12.x",
+				"Runtime": "nodejs10.x",
 				"Timeout": "25",
 				"Code": {
 					"S3Bucket": "amplify-perfreportrunthrough-test-113155-deployment",
-					"S3Key": "amplify-builds/genreporttest-493754412f4a4b485a6e-build.zip"
+					"S3Key": "amplify-builds/S3Trigger926957d6-2b6d2f42784976612f41-build.zip"
 				}
 			}
 		},
@@ -78,12 +70,12 @@
 				"RoleName": {
 					"Fn::If": [
 						"ShouldNotCreateEnvResources",
-						"perfreportrunthroughLambdaRole799289c3",
+						"S3Trigger926957d6LambdaRole926957d6",
 						{
 							"Fn::Join": [
 								"",
 								[
-									"perfreportrunthroughLambdaRole799289c3",
+									"S3Trigger926957d6LambdaRole926957d6",
 									"-",
 									{
 										"Ref": "env"
@@ -153,45 +145,6 @@
 					]
 				}
 			}
-		},
-		"CloudWatchEvent": {
-			"Type": "AWS::Events::Rule",
-			"Properties": {
-				"Description": "Schedule rule for Lambda",
-				"ScheduleExpression": {
-					"Ref": "CloudWatchRule"
-				},
-				"State": "ENABLED",
-				"Targets": [
-					{
-						"Arn": {
-							"Fn::GetAtt": [
-								"LambdaFunction",
-								"Arn"
-							]
-						},
-						"Id": {
-							"Ref": "LambdaFunction"
-						}
-					}
-				]
-			}
-		},
-		"PermissionForEventsToInvokeLambda": {
-			"Type": "AWS::Lambda::Permission",
-			"Properties": {
-				"FunctionName": {
-					"Ref": "LambdaFunction"
-				},
-				"Action": "lambda:InvokeFunction",
-				"Principal": "events.amazonaws.com",
-				"SourceArn": {
-					"Fn::GetAtt": [
-						"CloudWatchEvent",
-						"Arn"
-					]
-				}
-			}
 		}
 	},
 	"Outputs": {
@@ -216,11 +169,6 @@
 		"LambdaExecutionRole": {
 			"Value": {
 				"Ref": "LambdaExecutionRole"
-			}
-		},
-		"CloudWatchEventRule": {
-			"Value": {
-				"Ref": "CloudWatchEvent"
 			}
 		}
 	}

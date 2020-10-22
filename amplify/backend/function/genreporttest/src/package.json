@@ -5,11 +5,9 @@
   "main": "index.js",
   "license": "Apache-2.0",
   "dependencies": {
+    "aws-sdk": "^2.776.0",
     "chrome-aws-lambda": "^5.3.1",
     "lighthouse": "^6.4.1",
     "puppeteer-core": "^5.3.1"
-  },
-  "devDependencies": {
-    "puppeteer": "^5.3.1"
   }
 }

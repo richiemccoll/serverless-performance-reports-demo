@@ -10,6 +10,11 @@
             "StackName": "amplify-perfreportrunthrough-test-113155",
             "StackId": "arn:aws:cloudformation:us-west-2:267356220830:stack/amplify-perfreportrunthrough-test-113155/d1965950-1451-11eb-83ec-024cacb9f3d7",
             "AmplifyAppId": "d1undr7bzvc9qm"
+        },
+        "categories": {
+            "auth": {
+                "perfreportrunthrough98a1ff63": {}
+            }
         }
     }
 }
