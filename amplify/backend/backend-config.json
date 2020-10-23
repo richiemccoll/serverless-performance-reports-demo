@@ -1,38 +1,38 @@
 {
-	"function": {
-		"genreporttest": {
-			"build": true,
-			"providerPlugin": "awscloudformation",
-			"service": "Lambda"
-		},
-		"S3Trigger926957d6": {
-			"service": "Lambda",
-			"providerPlugin": "awscloudformation",
-			"build": true
-		}
-	},
-	"auth": {
-		"perfreportrunthrough98a1ff63": {
-			"service": "Cognito",
-			"providerPlugin": "awscloudformation",
-			"dependsOn": []
-		}
-	},
-	"storage": {
-		"perfreportstorage": {
-			"service": "S3",
-			"providerPlugin": "awscloudformation",
-			"dependsOn": [
-				{
-					"category": "function",
-					"resourceName": "S3Trigger926957d6",
-					"attributes": [
-						"Name",
-						"Arn",
-						"LambdaExecutionRole"
-					]
-				}
-			]
-		}
-	}
+    "function": {
+        "genreporttest": {
+            "build": true,
+            "providerPlugin": "awscloudformation",
+            "service": "Lambda"
+        },
+        "S3Triggerf120b824": {
+            "service": "Lambda",
+            "providerPlugin": "awscloudformation",
+            "build": true
+        }
+    },
+    "auth": {
+        "perfreportrunthrough98a1ff63": {
+            "service": "Cognito",
+            "providerPlugin": "awscloudformation",
+            "dependsOn": []
+        }
+    },
+    "storage": {
+        "perfreportstorage": {
+            "service": "S3",
+            "providerPlugin": "awscloudformation",
+            "dependsOn": [
+                {
+                    "category": "function",
+                    "resourceName": "S3Triggerf120b824",
+                    "attributes": [
+                        "Name",
+                        "Arn",
+                        "LambdaExecutionRole"
+                    ]
+                }
+            ]
+        }
+    }
 }
